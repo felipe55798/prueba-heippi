@@ -1,0 +1,84 @@
+<mat-card class="loseta">
+    <div class="titulo-principal">
+        <a
+            mat-fab
+            *ngIf="showUsuarioDetalle"
+            class="green-ball"
+            (click)="volverInicio()"
+        >
+            <mat-icon>arrow_back</mat-icon>
+        </a>
+        <h2 class="titulo-texto">
+            Administración de usuarios
+        </h2>
+    </div>
+</mat-card>
+
+<mat-card class="loseta" *ngIf="!showUsuarioDetalle">
+    <mat-card-content>
+        <div class="informacionTotales">
+            <h2>
+                El número total de usuarios registrados es: <strong>{{ cantidadUsuariosTotal }}</strong>
+            </h2>
+            <h2>
+                El número total de posts registrados es: <strong>{{ cantidadPostsTotal }}</strong>
+            </h2>
+        </div>
+        <div class="tabla">
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                <ng-container matColumnDef="nombre">
+                  <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                  <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container> 
+                
+                <ng-container matColumnDef="email">
+                  <th mat-header-cell *matHeaderCellDef> Correo electrónico </th>
+                  <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="telefono">
+                  <th mat-header-cell *matHeaderCellDef> Teléfono </th>
+                  <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="ciudad">
+                  <th mat-header-cell *matHeaderCellDef> Ciudad </th>
+                  <td mat-cell *matCellDef="let element"> {{element.address.city}} </td>
+                </ng-container>
+                <ng-container matColumnDef="acciones">
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef
+                        class="cel-centrado acciones"
+                    >Acciones</th>
+                    <td
+                        mat-cell
+                        *matCellDef="let row"
+                        data-label="acciones"
+                        class="cel-centrado acciones"
+                    >
+                        <a
+                            mat-fab
+                            color="primary"
+                            (click)="viewPersona(row)"
+                            class="actionBtn"
+                        >
+                            <mat-icon>visibility</mat-icon>
+                        </a>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons 
+                 aria-label="Select page of periodic elements">
+            </mat-paginator>
+        </div>
+    </mat-card-content>
+</mat-card>
+
+<div *ngIf="showUsuarioDetalle">
+    <app-detalle-usuario [usuario]="usuarioSeleccionado">
+    </app-detalle-usuario>
+</div>

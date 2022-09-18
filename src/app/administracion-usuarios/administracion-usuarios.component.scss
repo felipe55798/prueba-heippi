@@ -1,0 +1,74 @@
+.titulo-principal {
+    text-align: center;
+    display: flex;
+}
+
+.titulo-texto {
+  margin-right: auto; 
+  margin-left: auto; 
+  margin-bottom: 0px
+}
+
+table {
+  width: 100%;
+}
+
+td, th {
+  width: 20%;
+}
+
+.acciones{
+  width: 100%;
+  align-items: center;
+  padding: 2px;
+  justify-content:center;
+  grid-column-gap: 2px;
+  text-align: center;
+}
+
+mat-cell button, mat-cell a.actionBtn{
+  height: 32px;
+  width: 32px;
+  margin: 5px;
+}
+
+mat-cell button mat-icon, mat-cell a.actionBtn mat-icon {
+  height: 32px;
+  width: 32px;
+  position: relative;
+  top: -12px;
+}
+
+.actionBtn{
+  height: 32px;
+  width: 32px;
+  margin: 7px;
+  mat-icon {
+      height: 32px;
+      width: 32px;
+      position: relative;
+      top: -12px;
+  }
+}
+
+.loseta {
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+  background: gray;
+}
+
+.green-ball{
+  background-color: #c2185b;
+  border-radius: 75px;
+  height: 30px;
+  width: 30px;
+  left: 10px;
+  color: white;
+  padding-top: 2px;
+  mat-icon {
+    height: 40px;
+    position: relative;
+    top: -16px;
+  }
+}

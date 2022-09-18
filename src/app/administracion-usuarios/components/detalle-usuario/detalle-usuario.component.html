@@ -1,0 +1,37 @@
+<mat-card class="loseta">
+    <mat-card-content>
+        <div class="informacionTotales">
+            <h2>
+                Usuario: <strong>{{ usuario.name }}</strong>
+            </h2>
+            <h2>
+                El número total de posts registrados por el usuario es: <strong>{{ cantidadPostsUsuario }}</strong>
+            </h2>
+        </div>
+        <div class="tabla">
+            <div class="titulo-principal">
+                <h1>
+                    <strong>Lista de albums</strong>
+                </h1>
+            </div>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                <ng-container matColumnDef="titulo">
+                  <th mat-header-cell *matHeaderCellDef> Título </th>
+                  <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+                </ng-container> 
+                
+                <ng-container matColumnDef="url">
+                  <th mat-header-cell *matHeaderCellDef> URL </th>
+                  <td mat-cell *matCellDef="let element"> <a [href]="element.url" class="link">{{element.url}}</a> </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons 
+                 aria-label="Select page of periodic elements">
+            </mat-paginator>
+        </div>
+    </mat-card-content>
+</mat-card>
